@@ -18,11 +18,11 @@ footer, nav, .contentShifter {
     padding-left: 15px;
 }
 
-section:nth-child(odd) {
+section:nth-child(even) {
     background-color: #282828;
 }
 
-section:nth-child(even) {
+section:nth-child(odd) {
     background-color: #55B3D0;
 }
 
@@ -60,6 +60,11 @@ section {
     flex-direction: row;
     margin: 0 auto;
 }
+
+section header.top {
+    @include fluid-type(padding-top, 300px, 800px, 15px, 150px);
+}
+
 
 section header, section article {
     @include fluid-type(margin-left, 200px, 1000px, 5px, 40px);
