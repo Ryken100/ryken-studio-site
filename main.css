@@ -5,20 +5,19 @@ nav {
     top: 0px;
     left: 0px;
     position: fixed;
-
 }
 
-footer, nav {
+footer, nav, .contentShifter {
     height: 100px;
     width: 100%;
     background-color: #55B3D0;
 }
 
-section:nth-child(odd) {
+section:nth-child(even) {
     background-color: #282828;
 }
 
-section:nth-child(even) {
+section:nth-child(odd) {
     background-color: #55B3D0;
 }
 
@@ -39,4 +38,8 @@ section {
     font-family: 'Montserrat';
     user-select: none;
     cursor: pointer;
+}
+
+header .logo {
+    width: 80%;
 }
