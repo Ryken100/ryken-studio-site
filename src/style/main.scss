@@ -1,15 +1,17 @@
 @import './fluid-type.mixin.scss';
-
 * {
     margin: 0px;
 }
+
 nav {
     top: 0px;
     left: 0px;
     position: fixed;
 }
 
-footer, nav, .contentShifter {
+footer,
+nav,
+.contentShifter {
     z-index: 1;
     height: 50px;
     width: 100%;
@@ -35,6 +37,12 @@ section {
 }
 
 .navButton {
+    img.navIcon {
+        height: 30px;
+        transition: 500ms all linear;
+    }
+    p {
+    }
     color: white;
     height: 40px;
     display: inline-flex;
@@ -62,11 +70,11 @@ section {
 }
 
 section header.top {
-    @include fluid-type(padding-top, 300px, 800px, 15px, 150px);
+    @include fluid-type(padding-top, 300px, 800px, 15px, 200px);
 }
 
-
-section header, section article {
+section header,
+section article {
     @include fluid-type(margin-left, 200px, 1000px, 5px, 40px);
     @include fluid-type(margin-right, 200px, 1000px, 5px, 40px);
 }
@@ -93,7 +101,6 @@ section article {
     .navButton {
         display: block;
     }
-
     .navButton:hover {
         box-shadow: 0 4px 2px -2px transparent;
     }
@@ -104,4 +111,34 @@ section article {
     .contentShifter {
         height: 0px;
     }
+}
+
+@keyframes slideup {
+    from {
+        height: 40px;
+        @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+    }
+    to {
+        height: 0;
+        font-size: 0px;
+    }
+}
+	
+@keyframes slidedown {
+  from {
+    height: 0;
+    font-size: 0px;
+  }
+  to {
+    height: 40px;
+    @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+  }
+}
+
+.slidedown {
+    animation: slidedown 0.5s ease 0s 1 forwards;
+}
+
+.slideup {
+    animation: slideup 0.5s ease 0s 1 forwards;
 }
