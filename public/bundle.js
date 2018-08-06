@@ -720,7 +720,7 @@ function isScrolledIntoView(el, relElem) {
 }
 
 document.addEventListener('scroll', () => {
-    if (!isScrolledIntoView(document.getElementById('logo'), document.getElementsByTagName('nav')[0])) {
+    if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
         console.log('gone');
         document.getElementById('main-link-icon').classList.add('slidedown');
         document.getElementById('main-link-icon').classList.remove('slideup');
