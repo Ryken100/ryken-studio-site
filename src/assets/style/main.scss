@@ -41,7 +41,7 @@ section {
     font-family: 'Montserrat';
     user-select: none;
     cursor: pointer;
-    @include fluid-type(min-width, 200px, 600px, 50px, 175px);
+    @include fluid-type(min-width, 200px, 600px, 35px, 175px);
     @include fluid-type(font-size, 100px, 600px, 10px, 18px);
 }
 
@@ -59,6 +59,11 @@ section header .logo {
 }
 
 section header p {
-    @include fluid-type(font-size, 300px, 800px, 16px, 20px);
+    @include fluid-type(font-size, 300px, 800px, 18px, 28px);
     font-weight: bold;
+}
+
+
+section article {
+    @include fluid-type(font-size, 300px, 800px, 16px, 20px);
 }
