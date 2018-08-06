@@ -1,0 +1,42 @@
+* {
+    margin: 0px;
+}
+nav {
+    top: 0px;
+    left: 0px;
+    position: fixed;
+
+}
+
+footer, nav {
+    height: 100px;
+    width: 100%;
+    background-color: #55B3D0;
+}
+
+section:nth-child(odd) {
+    background-color: #282828;
+}
+
+section:nth-child(even) {
+    background-color: #55B3D0;
+}
+
+section {
+/*     border: 1px solid black;    
+ */    min-height: 80vh;
+    width: 100%;
+}
+
+.navButton {
+    color: white;
+    min-width: 175px;
+    height: 75px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-family: 'Montserrat';
+    user-select: none;
+    cursor: pointer;
+}
