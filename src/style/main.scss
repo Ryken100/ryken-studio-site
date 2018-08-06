@@ -82,6 +82,26 @@ section header p {
 }
 
 section article {
-    @include fluid-type(font-size, 300px, 800px, 16px, 20px);
+    @include fluid-type(font-size, 300px, 800px, 14px, 20px);
     padding-bottom: 35px;
+}
+
+@media screen and (max-width: 300px) {
+    * {
+        transition: 0.1s all linear;
+    }
+    .navButton {
+        display: block;
+    }
+
+    .navButton:hover {
+        box-shadow: 0 4px 2px -2px transparent;
+    }
+    nav {
+        position: relative;
+        height: min-content;
+    }
+    .contentShifter {
+        height: 0px;
+    }
 }
