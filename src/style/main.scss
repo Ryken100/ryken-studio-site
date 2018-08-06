@@ -50,6 +50,13 @@ section {
     transition: 0.2s linear all;
 }
 
+.centered {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
 section header, section article {
     @include fluid-type(margin-left, 200px, 1000px, 5px, 40px);
     @include fluid-type(margin-right, 200px, 1000px, 5px, 40px);
@@ -65,7 +72,7 @@ section header p {
     margin-bottom: 25px;
 }
 
-
 section article {
     @include fluid-type(font-size, 300px, 800px, 16px, 20px);
+    padding-bottom: 35px;
 }
