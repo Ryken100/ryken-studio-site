@@ -38,10 +38,7 @@ section {
 
 .navButton {
     img.navIcon {
-        height: 30px;
-        transition: 500ms all linear;
-    }
-    p {
+        height: 0px;
     }
     color: white;
     height: 40px;
@@ -115,8 +112,8 @@ section article {
 
 @keyframes slideup {
     from {
-        height: 40px;
-        @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+        height: calc(20px + 30 * (100vw - 100px) / 500);
+        font-size: calc(10px + 8 * (100vw - 100px) / 500);
     }
     to {
         height: 0;
@@ -130,9 +127,33 @@ section article {
     font-size: 0px;
   }
   to {
-    height: 40px;
-    @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+    height: calc(20px + 30 * (100vw - 100px) / 500);
+    font-size: calc(10px + 8 * (100vw - 100px) / 500)
   }
+}
+
+@media screen and (max-width: 600px) {
+    @keyframes slideup {
+        from {
+            height: 40px;
+            font-size: 18px
+        }
+        to {
+            height: 0;
+            font-size: 0px;
+        }
+    }
+        
+    @keyframes slidedown {
+      from {
+        height: 0;
+        font-size: 0px;
+      }
+      to {
+        height: 40px;
+        font-size: 18px
+    }
+    }
 }
 
 .slidedown {
