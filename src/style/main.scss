@@ -10,9 +10,12 @@ nav {
 }
 
 footer, nav, .contentShifter {
-    height: 70px;
+    z-index: 1;
+    height: 50px;
     width: 100%;
     background-color: #55B3D0;
+    padding-top: 20px;
+    padding-left: 15px;
 }
 
 section:nth-child(odd) {
@@ -24,8 +27,7 @@ section:nth-child(even) {
 }
 
 section {
-/*     border: 1px solid black;    
- */    min-height: 80vh;
+    min-height: 80vh;
     width: 100%;
     color: white;
     font-family: 'Montserrat';
@@ -41,7 +43,9 @@ section {
     font-family: 'Montserrat';
     user-select: none;
     cursor: pointer;
-    @include fluid-type(min-width, 200px, 600px, 35px, 175px);
+    @include fluid-type(min-width, 200px, 600px, 35px, 100px);
+    @include fluid-type(padding-left, 200px, 600px, 0px, 25px);
+    @include fluid-type(padding-right, 200px, 600px, 0px, 25px);
     @include fluid-type(font-size, 100px, 600px, 10px, 18px);
 }
 
