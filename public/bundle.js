@@ -86,19 +86,19 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib/index.js?sourceMap!./src/assets/style/main.scss":
-/*!***************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib?sourceMap!./src/assets/style/main.scss ***!
-  \***************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib/index.js?sourceMap!./src/style/main.scss":
+/*!********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib?sourceMap!./src/style/main.scss ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0px; }\n\nnav {\n  top: 0px;\n  left: 0px;\n  position: fixed; }\n\nfooter, nav, .contentShifter {\n  height: 70px;\n  width: 100%;\n  background-color: #55B3D0; }\n\nsection:nth-child(odd) {\n  background-color: #282828; }\n\nsection:nth-child(even) {\n  background-color: #55B3D0; }\n\nsection {\n  /*     border: 1px solid black;    \r\n */\n  min-height: 80vh;\n  width: 100%;\n  color: white;\n  font-family: 'Montserrat';\n  font-size: 1.2rem; }\n\n.navButton {\n  color: white;\n  height: inherit;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  font-family: 'Montserrat';\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  cursor: pointer;\n  min-width: 35px;\n  font-size: 10px; }\n  @media (min-width: 200px) {\n    .navButton {\n      min-width: calc(35px + 140 * (100vw - 200px) / 400); } }\n  @media (min-width: 600px) {\n    .navButton {\n      min-width: 175px; } }\n  @media (min-width: 100px) {\n    .navButton {\n      font-size: calc(10px + 8 * (100vw - 100px) / 500); } }\n  @media (min-width: 600px) {\n    .navButton {\n      font-size: 18px; } }\n\n.navButton:hover {\n  box-shadow: 0 4px 2px -2px black;\n  transition: 0.2s linear all; }\n\nsection header, section article {\n  margin: 0px 25px; }\n\nsection header .logo {\n  width: 285px; }\n  @media (min-width: 300px) {\n    section header .logo {\n      width: calc(285px + 515 * (100vw - 300px) / 700); } }\n  @media (min-width: 1000px) {\n    section header .logo {\n      width: 800px; } }\n\nsection header p {\n  font-size: 18px;\n  font-weight: bold; }\n  @media (min-width: 300px) {\n    section header p {\n      font-size: calc(18px + 10 * (100vw - 300px) / 500); } }\n  @media (min-width: 800px) {\n    section header p {\n      font-size: 28px; } }\n\nsection article {\n  font-size: 16px; }\n  @media (min-width: 300px) {\n    section article {\n      font-size: calc(16px + 4 * (100vw - 300px) / 500); } }\n  @media (min-width: 800px) {\n    section article {\n      font-size: 20px; } }\n", ""]);
+exports.push([module.i, "* {\n  margin: 0px; }\n\nnav {\n  top: 0px;\n  left: 0px;\n  position: fixed; }\n\nfooter, nav, .contentShifter {\n  height: 70px;\n  width: 100%;\n  background-color: #55B3D0; }\n\nsection:nth-child(odd) {\n  background-color: #282828; }\n\nsection:nth-child(even) {\n  background-color: #55B3D0; }\n\nsection {\n  /*     border: 1px solid black;    \r\n */\n  min-height: 80vh;\n  width: 100%;\n  color: white;\n  font-family: 'Montserrat';\n  font-size: 1.2rem; }\n\n.navButton {\n  color: white;\n  height: inherit;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  font-family: 'Montserrat';\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  cursor: pointer;\n  min-width: 35px;\n  font-size: 10px; }\n  @media (min-width: 200px) {\n    .navButton {\n      min-width: calc(35px + 140 * (100vw - 200px) / 400); } }\n  @media (min-width: 600px) {\n    .navButton {\n      min-width: 175px; } }\n  @media (min-width: 100px) {\n    .navButton {\n      font-size: calc(10px + 8 * (100vw - 100px) / 500); } }\n  @media (min-width: 600px) {\n    .navButton {\n      font-size: 18px; } }\n\n.navButton:hover {\n  box-shadow: 0 4px 2px -2px black;\n  transition: 0.2s linear all; }\n\nsection header, section article {\n  margin-left: 5px;\n  margin-right: 5px; }\n  @media (min-width: 200px) {\n    section header, section article {\n      margin-left: calc(5px + 30 * (100vw - 200px) / 800); } }\n  @media (min-width: 1000px) {\n    section header, section article {\n      margin-left: 35px; } }\n  @media (min-width: 200px) {\n    section header, section article {\n      margin-right: calc(5px + 30 * (100vw - 200px) / 800); } }\n  @media (min-width: 1000px) {\n    section header, section article {\n      margin-right: 35px; } }\n\nsection header .logo {\n  width: 150px; }\n  @media (min-width: 200px) {\n    section header .logo {\n      width: calc(150px + 650 * (100vw - 200px) / 800); } }\n  @media (min-width: 1000px) {\n    section header .logo {\n      width: 800px; } }\n\nsection header p {\n  font-size: 18px;\n  font-weight: bold; }\n  @media (min-width: 300px) {\n    section header p {\n      font-size: calc(18px + 10 * (100vw - 300px) / 500); } }\n  @media (min-width: 800px) {\n    section header p {\n      font-size: 28px; } }\n\nsection article {\n  font-size: 16px; }\n  @media (min-width: 300px) {\n    section article {\n      font-size: calc(16px + 4 * (100vw - 300px) / 500); } }\n  @media (min-width: 800px) {\n    section article {\n      font-size: 20px; } }\n", ""]);
 
 // exports
 
@@ -683,15 +683,31 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ "./src/assets/style/main.scss":
-/*!************************************!*\
-  !*** ./src/assets/style/main.scss ***!
-  \************************************/
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style/main.scss */ "./src/style/main.scss");
+/* harmony import */ var _style_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_main_scss__WEBPACK_IMPORTED_MODULE_0__);
+
+
+
+/***/ }),
+
+/***/ "./src/style/main.scss":
+/*!*****************************!*\
+  !*** ./src/style/main.scss ***!
+  \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/postcss-loader/lib?sourceMap!./main.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib/index.js?sourceMap!./src/assets/style/main.scss");
+var content = __webpack_require__(/*! !../../node_modules/css-loader!../../node_modules/sass-loader/lib/loader.js!../../node_modules/postcss-loader/lib?sourceMap!./main.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./node_modules/postcss-loader/lib/index.js?sourceMap!./src/style/main.scss");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -705,27 +721,11 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_style_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/style/main.scss */ "./src/assets/style/main.scss");
-/* harmony import */ var _assets_style_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_style_main_scss__WEBPACK_IMPORTED_MODULE_0__);
-
-
 
 /***/ })
 

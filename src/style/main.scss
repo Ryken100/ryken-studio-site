@@ -51,11 +51,12 @@ section {
 }
 
 section header, section article {
-    margin: 0px 25px;
+    @include fluid-type(margin-left, 200px, 1000px, 5px, 35px);
+    @include fluid-type(margin-right, 200px, 1000px, 5px, 35px);
 }
 
 section header .logo {
-    @include fluid-type(width, 300px, 1000px, 285px, 800px);
+    @include fluid-type(width, 200px, 1000px, 150px, 800px);
 }
 
 section header p {
