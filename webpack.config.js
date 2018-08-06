@@ -1,6 +1,6 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -8,8 +8,7 @@ module.exports = {
     output: {
         path: path.resolve('public'),
         filename: 'bundle.js',
-        publicPath: path.resolve('public'),
-        sourceMapFilename: 'source.map'
+        publicPath: path.resolve('public')
     },
     devServer: {
         contentBase: path.join(__dirname, 'public'),
@@ -19,6 +18,18 @@ module.exports = {
         watchContentBase: true
     },
     devtool: 'source-map',
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: 'src/index.html',
+                to: 'index.html'
+            },
+            {
+                from: 'src/assets/',
+                to: 'assets/'
+            }
+        ])
+    ],
     module: {
         rules: [
             {
@@ -31,10 +42,10 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    "style-loader", // creates style nodes from JS strings
-                    "css-loader", // translates CSS into CommonJS
-                    "sass-loader", // compiles Sass to CSS
-                    "postcss-loader?sourceMap"
+                    { loader: "style-loader" }, // creates style nodes from JS strings
+                    { loader: "css-loader" }, // translates CSS into CommonJS
+                    { loader: "sass-loader" }, // compiles Sass to CSS
+                    { loader: "postcss-loader?sourceMap" }
                 ]
             }
         ]
