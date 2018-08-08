@@ -86,7 +86,7 @@ section header {
     }
     img.logo {
         @include fluid-type(width, 200px, 1000px, 150px, 800px);
-        &#myTubeLogo {
+        &:not(.top) {
             padding-top: 15vw;
             padding-bottom: 15vw;
         }
