@@ -26,15 +26,17 @@ function isScrolledIntoView(el, relElem) {
 document.addEventListener('scroll', () => {
     if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
         console.log('gone');
-        document.getElementById('main-link-icon').style.height = '40px';
+        document.getElementById('main-link-icon').classList.add('show');
+        document.getElementById('main-link-text').classList.add('hide');
 
-        document.getElementById('main-link-text').style.fontSize = '0px';
-
-
+        document.getElementById('main-link-text').classList.remove('show');
+        document.getElementById('main-link-icon').classList.remove('hide');
     } else {
-        document.getElementById('main-link-text').style.fontSize = '16px';
+        document.getElementById('main-link-text').classList.add('show');
+        document.getElementById('main-link-icon').classList.add('hide');
 
-        document.getElementById('main-link-icon').style.height = '0px';
+        document.getElementById('main-link-icon').classList.remove('show');
+        document.getElementById('main-link-text').classList.remove('hide');
     }
 
 /*     if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {

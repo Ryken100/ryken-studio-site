@@ -7,25 +7,28 @@ nav {
     top: 0px;
     left: 0px;
     position: fixed;
-}
 
-#main-link-text {
-    transition: 0.2s font-size linear;
-    .show {
-        @include fluid-type(font-size, 100px, 600px, 10px, 18px);
-    }
-    .hide {
-        font-size: 0px;
-    }
-}
-
-#main-link-icon {
-    transition: 0.2s height linear;
-    .show {
-        @include fluid-type(height, 0px, 1000px, 20px, 40px);
-    }
-    .hide {
-        height: 0px;
+    div.navButton {
+        span#main-link-text {
+            transition: 0.2s font-size linear;
+            &.show {
+                @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+            }
+            &.hide {
+                font-size: 0px;
+            }
+        }
+        img#main-link-icon {
+            margin-left: -20px;
+            transition: 0.2s all linear;
+            @include fluid-type(margin-top, 200px, 1000px, -6px, 0px);
+            &.show {
+                @include fluid-type(height, 100px, 1000px, 20px, 90px);
+            }
+            &.hide {
+                height: 0px;
+            }
+        }
     }
 }
 
@@ -57,11 +60,9 @@ section {
 }
 
 .navButton {
-    img.navIcon {
-        height: 0px;
-    }
     color: white;
     height: 40px;
+    padding-top: 10px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +76,7 @@ section {
 }
 
 .navButton:hover {
-    box-shadow: 0 4px 2px -2px black;
+    box-shadow: 0 4px 2px -2px white;
     transition: 0.2s linear all;
 }
 
@@ -140,16 +141,16 @@ section article {
         font-size: 0px;
     }
 }
-	
+
 @keyframes slidedown {
-  from {
-    height: 0;
-    font-size: 0px;
-  }
-  to {
-    height: calc(20px + 30 * (100vw - 100px) / 500);
-    font-size: calc(10px + 8 * (100vw - 100px) / 500)
-  }
+    from {
+        height: 0;
+        font-size: 0px;
+    }
+    to {
+        height: calc(20px + 30 * (100vw - 100px) / 500);
+        font-size: calc(10px + 8 * (100vw - 100px) / 500)
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -163,16 +164,15 @@ section article {
             font-size: 0px;
         }
     }
-        
     @keyframes slidedown {
-      from {
-        height: 0;
-        font-size: 0px;
-      }
-      to {
-        height: 40px;
-        font-size: 18px
-    }
+        from {
+            height: 0;
+            font-size: 0px;
+        }
+        to {
+            height: 40px;
+            font-size: 18px
+        }
     }
 }
 
