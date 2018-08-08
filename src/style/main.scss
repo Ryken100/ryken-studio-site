@@ -9,6 +9,26 @@ nav {
     position: fixed;
 }
 
+#main-link-text {
+    transition: 0.2s font-size linear;
+    .show {
+        @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+    }
+    .hide {
+        font-size: 0px;
+    }
+}
+
+#main-link-icon {
+    transition: 0.2s height linear;
+    .show {
+        @include fluid-type(height, 0px, 1000px, 20px, 40px);
+    }
+    .hide {
+        height: 0px;
+    }
+}
+
 footer,
 nav,
 .contentShifter {
@@ -156,10 +176,10 @@ section article {
     }
 }
 
-.slidedown {
+/* .slidedown {
     animation: slidedown 0.5s ease 0s 1 forwards;
 }
 
 .slideup {
     animation: slideup 0.5s ease 0s 1 forwards;
-}
+} */

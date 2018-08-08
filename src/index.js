@@ -26,6 +26,19 @@ function isScrolledIntoView(el, relElem) {
 document.addEventListener('scroll', () => {
     if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
         console.log('gone');
+        document.getElementById('main-link-icon').style.height = '40px';
+
+        document.getElementById('main-link-text').style.fontSize = '0px';
+
+
+    } else {
+        document.getElementById('main-link-text').style.fontSize = '16px';
+
+        document.getElementById('main-link-icon').style.height = '0px';
+    }
+
+/*     if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
+        console.log('gone');
         document.getElementById('main-link-icon').classList.add('slidedown');
         document.getElementById('main-link-icon').classList.remove('slideup');
 
@@ -39,5 +52,5 @@ document.addEventListener('scroll', () => {
         document.getElementById('main-link-icon').classList.remove('slidedown');
         document.getElementById('main-link-icon').classList.add('slideup');
 
-    }
+    } */
 });
