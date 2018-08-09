@@ -38,21 +38,4 @@ document.addEventListener('scroll', () => {
         document.getElementById('main-link-icon').classList.remove('show');
         document.getElementById('main-link-text').classList.remove('hide');
     }
-
-/*     if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
-        console.log('gone');
-        document.getElementById('main-link-icon').classList.add('slidedown');
-        document.getElementById('main-link-icon').classList.remove('slideup');
-
-        document.getElementById('main-link-text').classList.add('slideup');
-        document.getElementById('main-link-text').classList.remove('slidedown');
-
-    } else {
-        document.getElementById('main-link-text').classList.add('slidedown');
-        document.getElementById('main-link-text').classList.remove('slideup');
-
-        document.getElementById('main-link-icon').classList.remove('slidedown');
-        document.getElementById('main-link-icon').classList.add('slideup');
-
-    } */
 });

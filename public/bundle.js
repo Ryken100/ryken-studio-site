@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "C:\\Users\\Chris\\Documents\\GitHub\\ryken-studio-site\\public";
+/******/ 	__webpack_require__.p = "/mnt/d/soft-repo/Dev/Web-projects/ryken-studio-site/public";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
