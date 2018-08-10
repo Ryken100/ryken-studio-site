@@ -1,7 +1,7 @@
 import './style/main.scss';
 import zenscroll from './assets/js/zenscroll-min.js';
 
-zenscroll.setup(null, 0); // Setup zenscroll to support URL hashes
+zenscroll.setup(null, 20); // Setup zenscroll to support URL hashes
 
 function debounce(func, wait, immediate) { // Debounce function (Bing it if you don't know)
     var timeout;
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
             let section = document.querySelector('section#' + sectionName); // Target the <section> that has an ID that matches our navButton's second class
 
             document.getElementsByClassName('navButton')[i].addEventListener('click', () => { // Add a 'click' event listenter 
-                zenscroll.intoView(section, 500, () => { // Scroll that section into view over 500ms
+                zenscroll.intoView(section, null, () => { // Scroll that section into view over 500ms
                     window.location.hash = section.id; // Change the browser URL hash when done
                 });
             });
@@ -118,7 +118,7 @@ document.querySelectorAll('section header div#photoSlider').forEach(function(ite
     item.innerHTML = data; // Place the new HTML onto the page
 
     let init = replaceAll(initPhotoSlider, '"jssor"', '"jssor_' + id + '"'); // Make the targeted photo slider match this slider's root div 
-    console.log(init);
+
     eval(init); // Init the photo slider for this section
 
 });
