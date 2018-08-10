@@ -8,7 +8,8 @@
     "copy-webpack-plugin": "^4.5.2",
     "node-sass": "^4.9.2",
     "postcss-scss": "^2.0.0",
-    "webpack": "^4.16.5"
+    "webpack": "^4.16.5",
+    "webpack-dev-server": "^3.1.5"
   },
   "devDependencies": {
     "css-loader": "^1.0.0",
@@ -19,8 +20,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack --config webpack.config.js",
-    "watch": "node_modules/.bin/webpack --config webpack.config.js --watch"
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "watch": "./node_modules/.bin/webpack --config webpack.config.js --watch",
+    "serve": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
