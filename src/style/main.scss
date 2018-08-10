@@ -100,6 +100,7 @@ section {
     }
     &#main {
         header {
+            // This makes a nice portion of space on desktop and gradually removes the space as the screen shrinks.
             @include fluid-type(padding-top, 300px, 800px, 15px, 200px);
             img.logo {
                 padding-top: 0px;
@@ -127,6 +128,14 @@ section header p {
     @include fluid-type(font-size, 300px, 800px, 18px, 28px);
     font-weight: bold;
     margin-bottom: 25px;
+}
+
+section#totallynotanadvert {
+    width: 100%;
+    min-height: 5vw;
+    background-color: #55B3D0;
+    font-size: 1vw;
+    text-align: center;
 }
 
 @media screen and (max-width: 300px) {
