@@ -25,6 +25,21 @@ function isScrolledIntoView(el, relElem) {
     }
 }
 
+
+document.addEventListener("DOMContentLoaded", function(event) { // Wait for the DOM to finish loading
+
+    for (let i in document.getElementsByClassName('navButton')) { // Loop through all the navButtons
+        if (document.getElementsByClassName('navButton')[i].classList[0] == 'navButton') { // Make sure it has a proper classList
+            let sectionName = document.getElementsByClassName('navButton')[i].classList[1]; // Get the buttons identifying class
+            let section = document.querySelector('section.' + sectionName); // Target the <section> that has a class that matches our navButton
+
+            document.getElementsByClassName('navButton')[i].addEventListener('click', () => { // Add a 'click' event listenter 
+                section.scrollIntoView(false, {behavior: 'smooth'}); // Scroll that section into view
+            });
+        }
+    }
+});
+
 document.addEventListener('scroll', () => {
     if (!isScrolledIntoView(document.querySelector('section.main header p#title'), document.getElementsByTagName('nav')[0])) {
         // If the 'main' header's title is not scrolled into view, show the icon
