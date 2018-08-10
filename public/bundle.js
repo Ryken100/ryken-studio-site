@@ -696,6 +696,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_main_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_main_scss__WEBPACK_IMPORTED_MODULE_0__);
 
 
+zenscroll.setup(null, 0); // Setup zenscroll to support URL hashes
+
 function isNearTop() {
     if (!((document.documentElement && document.documentElement.scrollTop) ||
         (document.scrollingElement && document.scrollingElement.scrollTop) ||
@@ -729,32 +731,35 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
             let section = document.querySelector('section#' + sectionName); // Target the <section> that has an ID that matches our navButton's second class
 
             document.getElementsByClassName('navButton')[i].addEventListener('click', () => { // Add a 'click' event listenter 
-                section.scrollIntoView(false, { behavior: 'smooth' }); // Scroll that section into view
-                window.location.hash = section.id;
+                zenscroll.intoView(section, 500, () => { // Scroll that section into view over 500ms
+                    window.location.hash = section.id; // Change the browser URL hash when done
+                });
+
             });
         }
     }
+
+    document.addEventListener('scroll', () => {
+        if (!isScrolledIntoView(document.querySelector('section.main header p#title'), document.getElementsByTagName('nav')[0])) {
+            // If the 'main' header's title is not scrolled into view, show the icon
+            document.querySelector('div.navButton.main .icon').classList.add('show');
+            document.querySelector('div.navButton.main .icon').classList.remove('hide');
+            // And hide the text
+            document.querySelector('div.navButton.main .text').classList.remove('show');
+            document.querySelector('div.navButton.main .text').classList.add('hide');
+
+        } else {
+            // If not in view, show the text
+            document.querySelector('div.navButton.main .text').classList.add('show');
+            document.querySelector('div.navButton.main .text').classList.remove('hide');
+            // and hide the icon
+            document.querySelector('div.navButton.main .icon').classList.remove('show');
+            document.querySelector('div.navButton.main .icon').classList.add('hide');
+        }
+    });
+
+
 });
-
-document.addEventListener('scroll', () => {
-    if (!isScrolledIntoView(document.querySelector('section.main header p#title'), document.getElementsByTagName('nav')[0])) {
-        // If the 'main' header's title is not scrolled into view, show the icon
-        document.querySelector('div.navButton.main .icon').classList.add('show');
-        document.querySelector('div.navButton.main .icon').classList.remove('hide');
-        // And hide the text
-        document.querySelector('div.navButton.main .text').classList.remove('show');
-        document.querySelector('div.navButton.main .text').classList.add('hide');
-
-    } else {
-        // If not in view, show the text
-        document.querySelector('div.navButton.main .text').classList.add('show');
-        document.querySelector('div.navButton.main .text').classList.remove('hide');
-        // and hide the icon
-        document.querySelector('div.navButton.main .icon').classList.remove('show');
-        document.querySelector('div.navButton.main .icon').classList.add('hide');
-    }
-});
-
 
 /***/ }),
 
