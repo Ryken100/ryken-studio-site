@@ -30,18 +30,6 @@ function insert(source, index, inserted) { // Function to insert a string into a
         return inserted + this;
 };
 
-function isNearTop() {
-    if (!((document.documentElement && document.documentElement.scrollTop) ||
-        (document.scrollingElement && document.scrollingElement.scrollTop) ||
-        document.body.scrollTop > 100)) return true;
-    else return false;
-}
-
-function isNearBottom() {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) return true;
-    else return false;
-}
-
 function isScrolledIntoView(el, relElem) {
     // el is the element being scrolled around
     // relElem is used for sticky elements like navigation bars
@@ -66,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // And hide the text
             document.querySelector('div.navButton.main .text').classList.remove('show');
             document.querySelector('div.navButton.main .text').classList.add('hide');
-
         } else {
             // If not in view, show the text
             document.querySelector('div.navButton.main .text').classList.add('show');
@@ -77,13 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     manageNavLogo = debounce(manageNavLogo, 25); // Debounce the function that is fired when scrolled. This helps with performance
-
     document.addEventListener('scroll', manageNavLogo);
 });
 
 document.addEventListener("DOMContentLoaded", function(event) { // Wait for the DOM to finish loading
     for (let i in document.getElementsByClassName('navButton')) { // Loop through all the navButtons
         if (document.getElementsByClassName('navButton')[i].classList && document.getElementsByClassName('navButton')[i].classList[0] == 'navButton') { // Make sure it has a proper classList
+
             let sectionName = document.getElementsByClassName('navButton')[i].classList[1]; // Get the buttons' supplemental second class
             let section = document.querySelector('section#' + sectionName); // Target the <section> that has an ID that matches our navButton's second class
 
@@ -103,7 +90,7 @@ import './assets/js/jssor.slider.min.js'; // Library for controlling the Photo S
 // A compactified template function for initializing a photo slider
 let initPhotoSlider = `(function() {var $=[{$Duration:1200,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
 
-// Get slide data. Name before 'Slides' must match the ID of the grandfather element it's contained in.
+// Get slide data here. Name before 'Slides' must match the ID of the grandfather element (parent of parent element) it's contained in
 let photoshaderSlides = require('./assets/html/slide-data/photoShader.html');
 let myTubeSlides = require('./assets/html/slide-data/myTube.html');
 

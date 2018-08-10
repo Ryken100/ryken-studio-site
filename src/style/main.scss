@@ -104,7 +104,7 @@ section {
         img.needsPadding {
             padding-top: 10vw;
             padding-bottom: 10vw;
-            height: unset !important;
+            height: unset !important; // Make !important so it doesn't get overwritten
         }
     }
     &#main {
