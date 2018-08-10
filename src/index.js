@@ -2,6 +2,21 @@ import './style/main.scss';
 
 zenscroll.setup(null, 0); // Setup zenscroll to support URL hashes
 
+function debounce(func, wait, immediate) { // Debounce function (Bing it if you don't know)
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
+
 function isNearTop() {
     if (!((document.documentElement && document.documentElement.scrollTop) ||
         (document.scrollingElement && document.scrollingElement.scrollTop) ||
@@ -23,35 +38,22 @@ function isScrolledIntoView(el, relElem) {
         var elemBottom = rect.bottom - relElem.getBoundingClientRect().height;
         return elemTop < window.innerHeight && elemBottom >= 0;
     } else {
-        throw new Error('Params for isScrolledIntoView() are not defined properly ')
+        throw new Error(`Parameters for isScrolledIntoView() are not defined properly: 
+        el: ${el}
+        relElem: ${relElem}
+        `);
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", function(event) { // Wait for the DOM to finish loading
-    for (let i in document.getElementsByClassName('navButton')) { // Loop through all the navButtons
-        if (document.getElementsByClassName('navButton')[i].classList[0] == 'navButton') { // Make sure it has a proper classList
-            let sectionName = document.getElementsByClassName('navButton')[i].classList[1]; // Get the buttons' supplemental second class
-            let section = document.querySelector('section#' + sectionName); // Target the <section> that has an ID that matches our navButton's second class
-
-            document.getElementsByClassName('navButton')[i].addEventListener('click', () => { // Add a 'click' event listenter 
-                zenscroll.intoView(section, 500, () => { // Scroll that section into view over 500ms
-                    window.location.hash = section.id; // Change the browser URL hash when done
-                });
-
-            });
-        }
-    }
-
-    document.addEventListener('scroll', () => {
-        if (!isScrolledIntoView(document.querySelector('section.main header p#title'), document.getElementsByTagName('nav')[0])) {
+document.addEventListener('DOMContentLoaded', () => {
+    function manageNavLogo() {
+        if (!isScrolledIntoView(document.querySelector('section#main header p#title'), document.querySelector('nav'))) {
             // If the 'main' header's title is not scrolled into view, show the icon
             document.querySelector('div.navButton.main .icon').classList.add('show');
             document.querySelector('div.navButton.main .icon').classList.remove('hide');
             // And hide the text
             document.querySelector('div.navButton.main .text').classList.remove('show');
             document.querySelector('div.navButton.main .text').classList.add('hide');
-
+            
         } else {
             // If not in view, show the text
             document.querySelector('div.navButton.main .text').classList.add('show');
@@ -60,7 +62,23 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
             document.querySelector('div.navButton.main .icon').classList.remove('show');
             document.querySelector('div.navButton.main .icon').classList.add('hide');
         }
-    });
+    }
+    manageNavLogo = debounce(manageNavLogo, 25); // Debounce the function that is fired when scrolled. This helps with performance
 
+    document.addEventListener('scroll', manageNavLogo);
+});
 
+document.addEventListener("DOMContentLoaded", function(event) { // Wait for the DOM to finish loading
+    for (let i in document.getElementsByClassName('navButton')) { // Loop through all the navButtons
+        if (document.getElementsByClassName('navButton')[i].classList && document.getElementsByClassName('navButton')[i].classList[0] == 'navButton') { // Make sure it has a proper classList
+            let sectionName = document.getElementsByClassName('navButton')[i].classList[1]; // Get the buttons' supplemental second class
+            let section = document.querySelector('section#' + sectionName); // Target the <section> that has an ID that matches our navButton's second class
+
+            document.getElementsByClassName('navButton')[i].addEventListener('click', () => { // Add a 'click' event listenter 
+                zenscroll.intoView(section, 500, () => { // Scroll that section into view over 500ms
+                    window.location.hash = section.id; // Change the browser URL hash when done
+                });
+            });
+        }
+    }
 });
