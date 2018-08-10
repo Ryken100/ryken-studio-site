@@ -47,6 +47,17 @@ module.exports = {
                     { loader: "sass-loader" }, // compiles Sass to CSS
                     { loader: "postcss-loader?sourceMap" }
                 ]
+            },
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader',
+                    options: {
+                        minimize: true,
+                        attrs: false,
+                        interpolate: true
+                    }
+                }
             }
         ]
     }

@@ -93,10 +93,13 @@ section {
 }
 
 section {
-    header img {
+    header > img {
         @include fluid-type(width, 200px, 1000px, 150px, 800px);
         padding-top: 15vw;
         padding-bottom: 15vw;
+    }
+    header .jssor {
+        padding-bottom: 5vw;
     }
     &#main {
         header {
