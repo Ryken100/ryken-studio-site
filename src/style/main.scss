@@ -1,44 +1,45 @@
-@import './fluid-type.mixin.scss';
+@import './fluid-type.mixin.scss'; // Fluid mixin \(*^*)/
+
 * {
     margin: 0px;
 }
-
 nav {
     top: 0px;
     left: 0px;
-    position: fixed;
+    position: fixed; // Target the buttons on the navigation bar
     div.navButton {
+        // Only target the main link
         &.main {
             span.text {
                 transition: 0.2s font-size linear;
                 &.show {
-                    @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+                    @include fluid-type(font-size, 100px, 600px, 10px, 18px); // Set a fluid font size when we want to show it
                 }
                 &.hide {
-                    font-size: 0px;
+                    font-size: 0px; // Instead of actually hiding with display:none, set to 0 to hide it so it animates nicely
                 }
             }
             img.icon {
                 margin-left: -20px;
-                transition: 0.2s all linear;
+                transition: 0.2s height linear;
                 @include fluid-type(margin-top, 200px, 1000px, -6px, 0px);
                 &.show {
-                    @include fluid-type(height, 100px, 1000px, 20px, 90px);
+                    @include fluid-type(height, 100px, 1000px, 20px, 90px); // Set a fluid height when we want to show it
                 }
                 &.hide {
-                    height: 0px;
+                    height: 0px; // Instead of actually hiding with display:none, set to 0 to hide it so it animates nicely
                 }
             }
         }
         color: white;
         height: 40px;
-        padding-top: 10px;
+        padding-top: 10px; // Next 3 lines aligns the buttons vertically and horizontally within parent element
         display: inline-flex;
         align-items: center;
         justify-content: center;
         font-family: 'Montserrat';
-        user-select: none;
-        cursor: pointer;
+        user-select: none; // Prevent text selection
+        cursor: pointer; // and change cursor to pointer to better emulate a real button
         @include fluid-type(min-width, 200px, 600px, 35px, 100px);
         @include fluid-type(padding-left, 200px, 600px, 0px, 25px);
         @include fluid-type(padding-right, 200px, 600px, 0px, 25px);
@@ -50,6 +51,7 @@ nav {
     }
 }
 
+// A .contentShifter so content doesn't go under the top-fixed navigation bar
 footer,
 nav,
 .contentShifter {
@@ -64,7 +66,7 @@ nav,
 section {
     &:nth-child(odd) {
         background-color: #55B3D0;
-    }
+    } // ^^ vv Alternating background colors for sections that don't have a color set.
     &:nth-child(even) {
         background-color: #282828;
     }
@@ -82,6 +84,7 @@ section {
 }
 
 .centered {
+    // I don't remember writing this and not quite sure how it works but it keeps images centered
     flex-wrap: wrap;
     display: flex;
     flex-direction: row;
@@ -107,19 +110,22 @@ section {
 
 section header,
 section article {
+    // Dynamic margins. No need for big margins on small screens, or for text to take up 100% of horizontal space on big screens
     @include fluid-type(margin-left, 200px, 1000px, 5px, 40px);
     @include fluid-type(margin-right, 200px, 1000px, 5px, 40px);
 }
 
+section header+article {
+    // Fluid typography!
+    @include fluid-type(font-size, 300px, 800px, 14px, 20px);
+    padding-bottom: 35px;
+}
+
 section header p {
+    // Fluid typography but for title of each section
     @include fluid-type(font-size, 300px, 800px, 18px, 28px);
     font-weight: bold;
     margin-bottom: 25px;
-}
-
-section header+article {
-    @include fluid-type(font-size, 300px, 800px, 14px, 20px);
-    padding-bottom: 35px;
 }
 
 @media screen and (max-width: 300px) {
@@ -127,16 +133,19 @@ section header+article {
         transition: 0.1s all linear;
     }
     .navButton {
+        // Put every link on its own line
         display: block;
     }
     .navButton:hover {
-        box-shadow: 0 4px 2px -2px transparent;
+        box-shadow: transparent;
     }
     nav {
+        // No need for the nav bar to stick to top of page without expanding menus
         position: relative;
         height: min-content;
     }
     .contentShifter {
+        // No content shift needed if the navigation bar doesn't stick to the top
         height: 0px;
     }
 }

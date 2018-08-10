@@ -13,6 +13,8 @@ function isNearBottom() {
 }
 
 function isScrolledIntoView(el, relElem) {
+    // el is the element being scrolled around
+    // relElem is used for sticky elements like navigation bars
     if (el && relElem) {
         var rect = el.getBoundingClientRect();
         var elemTop = rect.top + relElem.getBoundingClientRect().height;
@@ -24,18 +26,20 @@ function isScrolledIntoView(el, relElem) {
 }
 
 document.addEventListener('scroll', () => {
-    if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
-        console.log('gone');
+    if (!isScrolledIntoView(document.querySelector('section.main header p#title'), document.getElementsByTagName('nav')[0])) {
+        // If the 'main' header's title is not scrolled into view, show the icon
         document.querySelector('div.navButton.main .icon').classList.add('show');
+        document.querySelector('div.navButton.main .icon').classList.remove('hide');
+        // And hide the text
+        document.querySelector('div.navButton.main .text').classList.remove('show');
         document.querySelector('div.navButton.main .text').classList.add('hide');
 
-        document.querySelector('div.navButton.main .text').classList.remove('show');
-        document.querySelector('div.navButton.main .icon').classList.remove('hide');
     } else {
+        // If not in view, show the text
         document.querySelector('div.navButton.main .text').classList.add('show');
-        document.querySelector('div.navButton.main .icon').classList.add('hide');
-
-        document.querySelector('div.navButton.main .icon').classList.remove('show');
         document.querySelector('div.navButton.main .text').classList.remove('hide');
+        // and hide the icon
+        document.querySelector('div.navButton.main .icon').classList.remove('show');
+        document.querySelector('div.navButton.main .icon').classList.add('hide');
     }
 });
