@@ -26,16 +26,16 @@ function isScrolledIntoView(el, relElem) {
 document.addEventListener('scroll', () => {
     if (!isScrolledIntoView(document.getElementById('top-title'), document.getElementsByTagName('nav')[0])) {
         console.log('gone');
-        document.getElementById('main-link-icon').classList.add('show');
-        document.getElementById('main-link-text').classList.add('hide');
+        document.querySelector('div.navButton.main .icon').classList.add('show');
+        document.querySelector('div.navButton.main .text').classList.add('hide');
 
-        document.getElementById('main-link-text').classList.remove('show');
-        document.getElementById('main-link-icon').classList.remove('hide');
+        document.querySelector('div.navButton.main .text').classList.remove('show');
+        document.querySelector('div.navButton.main .icon').classList.remove('hide');
     } else {
-        document.getElementById('main-link-text').classList.add('show');
-        document.getElementById('main-link-icon').classList.add('hide');
+        document.querySelector('div.navButton.main .text').classList.add('show');
+        document.querySelector('div.navButton.main .icon').classList.add('hide');
 
-        document.getElementById('main-link-icon').classList.remove('show');
-        document.getElementById('main-link-text').classList.remove('hide');
+        document.querySelector('div.navButton.main .icon').classList.remove('show');
+        document.querySelector('div.navButton.main .text').classList.remove('hide');
     }
 });
