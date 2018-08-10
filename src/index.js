@@ -27,14 +27,14 @@ function isScrolledIntoView(el, relElem) {
 
 
 document.addEventListener("DOMContentLoaded", function(event) { // Wait for the DOM to finish loading
-
     for (let i in document.getElementsByClassName('navButton')) { // Loop through all the navButtons
         if (document.getElementsByClassName('navButton')[i].classList[0] == 'navButton') { // Make sure it has a proper classList
-            let sectionName = document.getElementsByClassName('navButton')[i].classList[1]; // Get the buttons identifying class
-            let section = document.querySelector('section.' + sectionName); // Target the <section> that has a class that matches our navButton
+            let sectionName = document.getElementsByClassName('navButton')[i].classList[1]; // Get the buttons' supplemental second class
+            let section = document.querySelector('section#' + sectionName); // Target the <section> that has an ID that matches our navButton's second class
 
             document.getElementsByClassName('navButton')[i].addEventListener('click', () => { // Add a 'click' event listenter 
-                section.scrollIntoView(false, {behavior: 'smooth'}); // Scroll that section into view
+                section.scrollIntoView(false, { behavior: 'smooth' }); // Scroll that section into view
+                window.location.hash = section.id;
             });
         }
     }

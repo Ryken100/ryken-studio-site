@@ -70,10 +70,10 @@ section {
     &:nth-child(even) {
         background-color: #282828;
     }
-    &.myTube {
+    &#myTube {
         background-color: #282828;
     }
-    &.photoshader {
+    &#photoshader {
         background-color: black;
     }
     min-height: 80vh;
@@ -97,7 +97,7 @@ section {
         padding-top: 15vw;
         padding-bottom: 15vw;
     }
-    &.main {
+    &#main {
         header {
             @include fluid-type(padding-top, 300px, 800px, 15px, 200px);
             img.logo {
