@@ -1,4 +1,5 @@
 import './style/main.scss';
+import zenscroll from './assets/js/zenscroll-min.js';
 
 zenscroll.setup(null, 0); // Setup zenscroll to support URL hashes
 
