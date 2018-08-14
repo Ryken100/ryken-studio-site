@@ -53,7 +53,6 @@ nav {
 }
 
 // A .contentShifter so content doesn't go under the top-fixed navigation bar
-footer,
 nav,
 .contentShifter {
     z-index: 1;
@@ -102,6 +101,7 @@ section {
         padding-top: 5vw;
         padding-bottom: 3vw;
         img.needsPadding {
+            display: inline-block;
             padding-top: 10vw;
             padding-bottom: 10vw;
             height: unset !important; // Make !important so it doesn't get overwritten
@@ -147,12 +147,15 @@ section#totallynotanadvert {
     text-align: center;
 }
 
-.slider-leftArrow, .slider-rightArrow {
+.slider-leftArrow,
+.slider-rightArrow {
     @include fluid-type(width, 200px, 1000px, 120px, 50px);
     @include fluid-type(height, 200px, 1000px, 120px, 50px);
 }
 
 footer {
+    background-color: #55B3D0;
+    width: 100%;
     height: min-content;
     padding-top: 0px;
     display: flex;
@@ -161,9 +164,10 @@ footer {
     .contact {
         font-weight: bolder;
     }
-    img, svg, a {
-        max-height: 50px;
-        height: 40px;
+    img,
+    svg,
+    a {
+        @include fluid-type(height, 200px, 1000px, 60px, 30px);
         margin: 8px;
     }
     svg {
@@ -180,11 +184,9 @@ footer {
         }
     }
     div {
-        width: 32%;
         height: inherit;
     }
-
-    div:nth-child(3) {
+    div:nth-child(2) {
         display: flex;
         justify-content: flex-end;
         align-content: unset;
@@ -212,10 +214,19 @@ footer {
         // No content shift needed if the navigation bar doesn't stick to the top
         height: 0px;
     }
+}
+
+@media screen and (max-width: 350px) {
     footer {
-        height: min-content;
-        display: flex;
+        div {
+            width: 100%;
+            display: block;
+        }
+        display: block;
         justify-content: center;
         align-content: center;
+        div:nth-child(3) {
+            display: block;
+        }
     }
 }
