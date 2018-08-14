@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
     }
 });
 
-
 import slider from './assets/html/slider.html'; // Get photo slider template
 import './assets/js/jssor.slider.min.js'; // Library for controlling the Photo Slider
 
@@ -91,9 +90,18 @@ import './assets/js/jssor.slider.min.js'; // Library for controlling the Photo S
 let initPhotoSlider = `(function() {var $=[{$Duration:1200,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
 
 document.querySelectorAll('div#photoSlider').forEach(function(item) {
-    let id = item.parentElement.parentElement.id; // Get the ID of the grandfather element the photo slider belongs to.
+
+    let id = item.getAttribute('data-slider-name') || (() => { // Get specified ID of this photo slider. If no ID is specified, the index is used instead.
+        let sliders = document.querySelectorAll('div#photoSlider'); // Get all the photoSliders
+        for (let i in sliders) { // Loop through them
+            if (sliders[i] == item) { // If the current slider is the one we're looking for,
+                return i; // Return its index
+            }
+        } // Also yes this is a loop in a self executing function inside a variable. Don't @ me 
+    })(); 
+
     let slideData = item.innerHTML; // Get the slide data from inside the photoSlider div
-    
+    console.log(id)
     let data = insert(slider, slider.indexOf('id=slideData>') + 'id=slideData>'.length, slideData); // Combine the slider data and template into new variable 
     data = replaceAll(data, 'jssor_', 'jssor_' + id + '_'); // Give every part of the new data a unique ID based on the grandfather element ID
     data = replaceAll(data, 'id=jssor', 'id=jssor_' + id); // Make this slider's root div unique so the init function can target it exclusively
