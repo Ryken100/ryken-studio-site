@@ -90,21 +90,17 @@ import './assets/js/jssor.slider.min.js'; // Library for controlling the Photo S
 // A compactified template function for initializing a photo slider
 let initPhotoSlider = `(function() {var $=[{$Duration:1200,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
 
-// Get slide data here. Name before 'Slides' must match the ID of the grandfather element (parent of parent element) it's contained in
-let photoshaderSlides = require('./assets/html/slide-data/photoShader.html');
-let myTubeSlides = require('./assets/html/slide-data/myTube.html');
-
-document.querySelectorAll('section header div#photoSlider').forEach(function(item) {
+document.querySelectorAll('div#photoSlider').forEach(function(item) {
     let id = item.parentElement.parentElement.id; // Get the ID of the grandfather element the photo slider belongs to.
-    let slideDataTarget = eval(id + 'Slides'); // Get the right slide data variable based on the ID of the grandfather element
+    let slideData = item.innerHTML; // Get the slide data from inside the photoSlider div
     
-    let data = insert(slider, slider.indexOf('id=slideData>') + 'id=slideData>'.length, slideDataTarget); // Combine the slider data and template into new variable 
+    let data = insert(slider, slider.indexOf('id=slideData>') + 'id=slideData>'.length, slideData); // Combine the slider data and template into new variable 
     data = replaceAll(data, 'jssor_', 'jssor_' + id + '_'); // Give every part of the new data a unique ID based on the grandfather element ID
     data = replaceAll(data, 'id=jssor', 'id=jssor_' + id); // Make this slider's root div unique so the init function can target it exclusively
 
     item.innerHTML = data; // Place the new HTML onto the page
 
-    let init = replaceAll(initPhotoSlider, '"jssor"', '"jssor_' + id + '"'); // Make the targeted photo slider match this slider's root div 
+    let init = replaceAll(initPhotoSlider, '"jssor"', '"jssor_' + id + '"'); // Make the javascript for this photo slider be unique to this slider's root div 
 
     eval(init); // Init the photo slider for this section
 

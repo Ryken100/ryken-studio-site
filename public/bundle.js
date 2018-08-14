@@ -683,28 +683,6 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ "./src/assets/html/slide-data/myTube.html":
-/*!************************************************!*\
-  !*** ./src/assets/html/slide-data/myTube.html ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div> <img data-u=image class=\"logo needsPadding\" src=\"./assets/img/myTube Transparent Logo.png\"/> <div data-u=thumb>Slide Description 001</div> </div> <div> <img data-u=image class=logo src=assets/img/myTube/screen1.png /> <div data-u=thumb>Slide Description 002</div> </div> <div> <img data-u=image class=logo src=assets/img/myTube/screen2.png /> <div data-u=thumb>Slide Description 003</div> </div> <div> <img data-u=image class=logo src=assets/img/myTube/screen3.png /> <div data-u=thumb>Slide Description 004</div> </div> <div> <img data-u=image class=logo src=assets/img/myTube/screen4.png /> <div data-u=thumb>Slide Description 004</div> </div> <div style=background-color:#ff7c28> <div style=position:absolute;top:50px;left:50px;width:450px;height:62px;z-index:0;font-size:16px;color:#000;line-height:24px;text-align:left;padding:5px;box-sizing:border-box> You can add HTML as a slide, too! <br/> If you need it, that is. </div> <div data-u=thumb>Did you know?</div> </div> ";
-
-/***/ }),
-
-/***/ "./src/assets/html/slide-data/photoShader.html":
-/*!*****************************************************!*\
-  !*** ./src/assets/html/slide-data/photoShader.html ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div> <img data-u=image class=\"logo needsPadding\" src=\"assets/img/Photo Shader.png\"/> <div data-u=thumb></div> </div> <div> <img data-u=image class=logo src=\"assets/img/Photo Shader/screen1.png\"/> <div data-u=thumb>Slide Description 002</div> </div> <div> <img data-u=image class=logo src=\"assets/img/Photo Shader/screen2.png\"/> <div data-u=thumb>Slide Description 003</div> </div> <div> <img data-u=image class=logo src=\"assets/img/Photo Shader/screen3.png\"/> <div data-u=thumb>Slide Description 004</div> </div> <div> <img data-u=image class=logo src=\"assets/img/Photo Shader/screen4.png\"/> <div data-u=thumb>Slide Description 004</div> </div> <div style=background-color:#ff7c28> <div style=position:absolute;top:50px;left:50px;width:450px;height:62px;z-index:0;font-size:16px;color:#000;line-height:24px;text-align:left;padding:5px;box-sizing:border-box> You can add HTML as a slide, too! <br/> If you need it, that is. </div> <div data-u=thumb>Did you know?</div> </div> ";
-
-/***/ }),
-
 /***/ "./src/assets/html/slider.html":
 /*!*************************************!*\
   !*** ./src/assets/html/slider.html ***!
@@ -854,21 +832,17 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
 // A compactified template function for initializing a photo slider
 let initPhotoSlider = `(function() {var $=[{$Duration:1200,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
 
-// Get slide data here. Name before 'Slides' must match the ID of the grandfather element (parent of parent element) it's contained in
-let photoshaderSlides = __webpack_require__(/*! ./assets/html/slide-data/photoShader.html */ "./src/assets/html/slide-data/photoShader.html");
-let myTubeSlides = __webpack_require__(/*! ./assets/html/slide-data/myTube.html */ "./src/assets/html/slide-data/myTube.html");
-
-document.querySelectorAll('section header div#photoSlider').forEach(function(item) {
+document.querySelectorAll('div#photoSlider').forEach(function(item) {
     let id = item.parentElement.parentElement.id; // Get the ID of the grandfather element the photo slider belongs to.
-    let slideDataTarget = eval(id + 'Slides'); // Get the right slide data variable based on the ID of the grandfather element
+    let slideData = item.innerHTML; // Get the slide data from inside the photoSlider div
     
-    let data = insert(_assets_html_slider_html__WEBPACK_IMPORTED_MODULE_2___default.a, _assets_html_slider_html__WEBPACK_IMPORTED_MODULE_2___default.a.indexOf('id=slideData>') + 'id=slideData>'.length, slideDataTarget); // Combine the slider data and template into new variable 
+    let data = insert(_assets_html_slider_html__WEBPACK_IMPORTED_MODULE_2___default.a, _assets_html_slider_html__WEBPACK_IMPORTED_MODULE_2___default.a.indexOf('id=slideData>') + 'id=slideData>'.length, slideData); // Combine the slider data and template into new variable 
     data = replaceAll(data, 'jssor_', 'jssor_' + id + '_'); // Give every part of the new data a unique ID based on the grandfather element ID
     data = replaceAll(data, 'id=jssor', 'id=jssor_' + id); // Make this slider's root div unique so the init function can target it exclusively
 
     item.innerHTML = data; // Place the new HTML onto the page
 
-    let init = replaceAll(initPhotoSlider, '"jssor"', '"jssor_' + id + '"'); // Make the targeted photo slider match this slider's root div 
+    let init = replaceAll(initPhotoSlider, '"jssor"', '"jssor_' + id + '"'); // Make the javascript for this photo slider be unique to this slider's root div 
 
     eval(init); // Init the photo slider for this section
 
