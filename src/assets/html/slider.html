@@ -22,28 +22,37 @@
     }
 
 
-    .jssor_a061 {
+    .jssor_navArrow {
+        box-shadow: #000;
+        transition: 0.2s opacity linear;
+        opacity: 0.5;
         display: block;
         position: absolute;
         cursor: pointer;
     }
 
-    .jssor_a061 .a {
+    .jssor_navArrow svg {
+        box-shadow: 3px 3px 3px 3px black;
+        border-radius: 7px;
+    }
+
+    .jssor_navArrow .a {
         fill: none;
-        stroke: #fff;
-        stroke-width: 360;
+        stroke: lightgray;
+        stroke-width: 420;
         stroke-linecap: round;
     }
 
-    .jssor_a061:hover {
-        opacity: .8;
+    .jssor_navArrow:hover {
+        opacity: 1;
+        stroke: white;
     }
 
-    .jssor_a061.jssora061dn {
+    .jssor_navArrow.jssora061dn {
         opacity: .5;
     }
 
-    .jssor_a061.jssora061ds {
+    .jssor_navArrow.jssora061ds {
         opacity: .3;
         pointer-events: none;
     }
@@ -68,13 +77,13 @@
         </div>
     </div>
     <!-- Arrow Navigator -->
-    <div data-u="arrowleft" class="jssor_a061" style="width:55px;height:55px;top:50%;left:25px;" data-autocenter="2" data-scale="0.75"
+    <div data-u="arrowleft" class="jssor_navArrow" style="width:50px;height:45px;top:50%;left:25px;" data-autocenter="2" data-scale="0.75"
         data-scale-left="0.75">
         <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
             <path class="a" d="M11949,1919L5964.9,7771.7c-127.9,125.5-127.9,329.1,0,454.9L11949,14079"></path>
         </svg>
     </div>
-    <div data-u="arrowright" class="jssor_a061" style="width:55px;height:55px;top:50%;right:25px;" data-autocenter="2" data-scale="0.75"
+    <div data-u="arrowright" class="jssor_navArrow" style="width:50px;height:50px;top:50%;right:25px;" data-autocenter="2" data-scale="0.75"
         data-scale-right="0.75">
         <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
             <path class="a" d="M5869,1919l5984.1,5852.7c127.9,125.5,127.9,329.1,0,454.9L5869,14079"></path>

@@ -97,6 +97,7 @@ document.querySelectorAll('div#photoSlider').forEach(function(item) {
     let data = insert(slider, slider.indexOf('id=slideData>') + 'id=slideData>'.length, slideData); // Combine the slider data and template into new variable 
     data = replaceAll(data, 'jssor_', 'jssor_' + id + '_'); // Give every part of the new data a unique ID based on the grandfather element ID
     data = replaceAll(data, 'id=jssor', 'id=jssor_' + id); // Make this slider's root div unique so the init function can target it exclusively
+    data = replaceAll(data, 'slideData', 'slideData' + id); // Make this slider's slideData div unique
 
     item.innerHTML = data; // Place the new HTML onto the page
 
