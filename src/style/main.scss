@@ -147,8 +147,13 @@ section#totallynotanadvert {
     text-align: center;
 }
 
+.slider-leftArrow, .slider-rightArrow {
+    @include fluid-type(width, 200px, 1000px, 120px, 50px);
+    @include fluid-type(height, 200px, 1000px, 120px, 50px);
+}
+
 footer {
-    height: 60px;
+    height: min-content;
     padding-top: 0px;
     display: flex;
     flex-direction: row;
