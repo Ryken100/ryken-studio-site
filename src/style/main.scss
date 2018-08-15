@@ -15,6 +15,7 @@ nav {
         &.main {
             span.text {
                 transition: 0.2s font-size linear;
+                @include fluid-type(width, 100px, 1000px, 100px, 150px); // Set a fluid width to make it take up the same amount of space as the image would
                 &.show {
                     @include fluid-type(font-size, 100px, 600px, 10px, 18px); // Set a fluid font size when we want to show it
                 }
