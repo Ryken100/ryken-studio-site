@@ -59,7 +59,7 @@ nav,
 .contentShifter {
     z-index: 1;
     height: 50px;
-    width: 99%;
+    width: calc(100% - 15px);
     background-color: #55B3D0;
     padding-top: 20px;
     padding-left: 15px;
