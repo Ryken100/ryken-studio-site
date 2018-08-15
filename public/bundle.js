@@ -77,7 +77,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/mnt/d/soft-repo/Dev/Web-projects/ryken-studio-site/public";
+/******/ 	__webpack_require__.p = "C:\\Users\\Chris\\Documents\\GitHub\\ryken-studio-site\\public";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -829,8 +829,7 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
  // Library for controlling the Photo Slider
 
 // A compactified template function for initializing a photo slider
-let initPhotoSlider = `(function() {var $=[{$Duration:1200,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
-
+let initPhotoSlider = `(function() {var $=[{$Duration:1200,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$FillMode:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
 document.querySelectorAll('div#photoSlider').forEach(function(item) {
 
     let id = item.getAttribute('data-slider-name') || (() => { // Get specified ID of this photo slider. If no ID is specified, the index is used instead.
