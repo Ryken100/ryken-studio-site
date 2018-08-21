@@ -2,9 +2,7 @@
 * {
     margin: 0px;
     scroll-behavior: smooth;
-/*     overflow-x: hidden;
- */}
-
+}
 
 nav {
     top: 0px;
@@ -79,7 +77,10 @@ section {
     &#photoshader {
         background-color: black;
     }
-    min-height: 60vh;
+    &#about {
+        background-color: #55B3D0;
+    }
+    min-height: 40vh;
     width: 100%;
     color: white;
     font-family: 'Montserrat';
@@ -92,6 +93,18 @@ section {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
+}
+
+hr {
+    margin-top: 5vw;
+    color: white;
+}
+
+.darkHorizontalRule {
+    margin-top: 5vw;
+    width: max-content;
+    color: #282828;
+    box-shadow: 0px 0px 2px 1px #282828;
 }
 
 section {
@@ -110,6 +123,11 @@ section {
             height: unset !important; // Make !important so it doesn't get overwritten
         }
     }
+    &:not(#main) {
+        header {
+            @include fluid-type(padding-top, 300px, 800px, 15px, 120px);
+        }
+    }
     &#main {
         header {
             // This makes a nice portion of space on desktop and gradually removes the space as the screen shrinks.
@@ -125,19 +143,19 @@ section {
 section header,
 section article {
     // Dynamic margins. No need for big margins on small screens, or for text to take up 100% of horizontal space on big screens
-    @include fluid-type(margin-left, 200px, 1000px, 5px, 40px);
-    @include fluid-type(margin-right, 200px, 1000px, 5px, 40px);
+    @include fluid-type(margin-left, 500px, 1500px, 10px, 100px);
+    @include fluid-type(margin-right, 500px, 1500px, 10px, 100px);
 }
 
 section header+article {
-    // Fluid typography!
+    // Fluid typography
     @include fluid-type(font-size, 300px, 800px, 14px, 20px);
     padding-bottom: 35px;
 }
 
 section header p {
     // Fluid typography but for title of each section
-    @include fluid-type(font-size, 300px, 800px, 18px, 28px);
+    @include fluid-type(font-size, 300px, 800px, 20px, 48px);
     font-weight: bold;
     margin-bottom: 25px;
 }
