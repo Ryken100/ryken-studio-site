@@ -1,253 +1,271 @@
-@import './fluid-type.mixin.scss'; // Fluid mixin \(*^*)/
+@import "./fluid-type.mixin.scss"; // Fluid mixin \(*^*)/
 * {
-    margin: 0px;
-    scroll-behavior: smooth;
+  margin: 0px;
+  scroll-behavior: smooth;
 }
 
 nav {
-    top: 0px;
-    left: 0px;
-    position: fixed; // Target the buttons on the navigation bar
-    div.navButton {
-        // Only target the main link
-        &.main {
-            span.text {
-                transition: 0.2s font-size linear;
-                &.show {
-                    @include fluid-type(width, 100px, 1000px, 100px, 150px); // Set a fluid width to make it take up the same amount of space as the image would
-                    @include fluid-type(font-size, 100px, 600px, 10px, 18px); // Set a fluid font size when we want to show it
-                }
-                &.hide {
-                    font-size: 0px; // Instead of actually hiding with display:none, set to 0 to hide it so it animates nicely
-                }
-            }
-            img.icon {
-                margin-left: -20px;
-                transition: 0.2s height linear;
-                @include fluid-type(margin-top, 200px, 1000px, -6px, 0px);
-                &.show {
-                    @include fluid-type(height, 100px, 1000px, 20px, 90px); // Set a fluid height when we want to show it
-                }
-                &.hide {
-                    height: 0px; // Instead of actually hiding with display:none, set to 0 to hide it so it animates nicely
-                }
-            }
+  top: 0px;
+  left: 0px;
+  position: fixed; // Target the buttons on the navigation bar
+  div.navButton {
+    // Only target the main link
+    &.main {
+      span.text {
+        transition: 0.2s font-size linear;
+        &.show {
+          @include fluid-type(
+            width,
+            100px,
+            1000px,
+            100px,
+            150px
+          ); // Set a fluid width to make it take up the same amount of space as the image would
+          @include fluid-type(font-size, 100px, 600px, 10px, 18px); // Set a fluid font size when we want to show it
         }
-        color: white;
-        height: 40px;
-        padding-top: 10px; // Next 3 lines aligns the buttons vertically and horizontally within parent element
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Montserrat';
-        user-select: none; // Prevent text selection
-        cursor: pointer; // and change cursor to pointer to better emulate a real button
-        @include fluid-type(min-width, 200px, 600px, 35px, 100px);
-        @include fluid-type(padding-left, 200px, 600px, 0px, 25px);
-        @include fluid-type(padding-right, 200px, 600px, 0px, 25px);
-        @include fluid-type(font-size, 100px, 600px, 10px, 18px);
-        &:hover {
-            box-shadow: 0 4px 2px -2px white;
-            transition: 0.2s linear all;
+        &.hide {
+          font-size: 0px; // Instead of actually hiding with display:none, set to 0 to hide it so it animates nicely
         }
+      }
+      img.icon {
+        margin-left: -20px;
+        transition: 0.2s height linear;
+        @include fluid-type(margin-top, 200px, 1000px, -6px, 0px);
+        &.show {
+          @include fluid-type(height, 100px, 1000px, 20px, 90px); // Set a fluid height when we want to show it
+        }
+        &.hide {
+          height: 0px; // Instead of actually hiding with display:none, set to 0 to hide it so it animates nicely
+        }
+      }
     }
+    color: white;
+    height: 40px;
+    padding-top: 10px; // Next 3 lines aligns the buttons vertically and horizontally within parent element
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Montserrat";
+    user-select: none; // Prevent text selection
+    cursor: pointer; // and change cursor to pointer to better emulate a real button
+    @include fluid-type(min-width, 200px, 600px, 35px, 100px);
+    @include fluid-type(padding-left, 200px, 600px, 0px, 25px);
+    @include fluid-type(padding-right, 200px, 600px, 0px, 25px);
+    @include fluid-type(font-size, 100px, 600px, 10px, 18px);
+    &:hover {
+      box-shadow: 0 4px 2px -2px white;
+      transition: 0.2s linear all;
+    }
+  }
 }
 
 // A .contentShifter so content doesn't go under the top-fixed navigation bar
 nav,
 .contentShifter {
-    z-index: 1;
-    height: 50px;
-    width: calc(100% - 15px);
-    background-color: #55B3D0;
-    padding-top: 20px;
-    padding-left: 15px;
+  z-index: 1;
+  height: 50px;
+  width: calc(100% - 15px);
+  background-color: #55b3d0;
+  padding-top: 20px;
+  padding-left: 15px;
 }
 
 section {
-    &:nth-child(odd) {
-        background-color: #55B3D0;
-    } // ^^ vv Alternating background colors for sections that don't have a color set.
-    &:nth-child(even) {
-        background-color: #282828;
-    }
-    &#myTube {
-        background-color: #282828;
-    }
-    &#photoshader {
-        background-color: black;
-    }
-    &#about {
-        background-color: #55B3D0;
-    }
-    min-height: 40vh;
-    width: 100%;
-    color: white;
-    font-family: 'Montserrat';
-    font-size: 1.2rem;
+  &:nth-child(odd) {
+    background-color: #55b3d0;
+  } // ^^ vv Alternating background colors for sections that don't have a color set.
+  &:nth-child(even) {
+    background-color: #282828;
+  }
+  &#myTube {
+    background-color: #282828;
+  }
+  &#photoshader {
+    background-color: black;
+  }
+  &#about {
+    background-color: #55b3d0;
+  }
+  min-height: 40vh;
+  width: 100%;
+  color: white;
+  font-family: "Montserrat";
+  font-size: 1.2rem;
 }
 
 .centered {
-    // I don't remember writing this and not quite sure how it works but it keeps images centered
-    flex-wrap: wrap;
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
+  // I don't remember writing this and not quite sure how it works but it keeps images centered
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  div[data-u="thumb"] {
+    @include fluid-type(font-size, 300px, 1500px, 16px, 24px);
+    margin: 10px;
+  }
+
+  div img {
+    width: 70vw;
+  }
+}
+
+.embla__slide {
+  position: relative; /* Needed if loop: true */
+  flex: 0 0 100%; /* Choose any width */
 }
 
 hr {
-    margin-top: 5vw;
-    color: white;
+  margin-top: 5vw;
+  color: white;
 }
 
 .darkHorizontalRule {
-    margin-top: 5vw;
-    width: 100%;
-    color: #282828;
-    box-shadow: 0px 0px 2px 1px #282828;
+  margin-top: 5vw;
+  width: 100%;
+  color: #282828;
+  box-shadow: 0px 0px 2px 1px #282828;
 }
 
 section {
-    header>img {
-        @include fluid-type(width, 200px, 1000px, 150px, 800px);
-        padding-top: 15vw;
-        padding-bottom: 15vw;
+  header > img {
+    @include fluid-type(width, 200px, 1000px, 150px, 800px);
+    padding-top: 15vw;
+    padding-bottom: 15vw;
+  }
+
+  &:not(#main) {
+    header {
+      @include fluid-type(padding-top, 300px, 800px, 15px, 120px);
     }
-    header #photoSlider {
-        padding-top: 5vw;
-        padding-bottom: 3vw;
-        img.needsPadding {
-            display: inline-block;
-            padding-top: 10vw;
-            padding-bottom: 10vw;
-            height: unset !important; // Make !important so it doesn't get overwritten
-        }
+  }
+  &#main {
+    header {
+      // This makes a nice portion of space on desktop and gradually removes the space as the screen shrinks.
+      @include fluid-type(padding-top, 300px, 800px, 15px, 200px);
+      img.logo {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
     }
-    &:not(#main) {
-        header {
-            @include fluid-type(padding-top, 300px, 800px, 15px, 120px);
-        }
-    }
-    &#main {
-        header {
-            // This makes a nice portion of space on desktop and gradually removes the space as the screen shrinks.
-            @include fluid-type(padding-top, 300px, 800px, 15px, 200px);
-            img.logo {
-                padding-top: 0px;
-                padding-bottom: 0px;
-            }
-        }
-    }
+  }
 }
 
 section header,
 section article {
-    // Dynamic margins. No need for big margins on small screens, or for text to take up 100% of horizontal space on big screens
-    @include fluid-type(margin-left, 500px, 1500px, 10px, 100px);
-    @include fluid-type(margin-right, 500px, 1500px, 10px, 100px);
+  // Dynamic margins. No need for big margins on small screens, or for text to take up 100% of horizontal space on big screens
+  @include fluid-type(margin-left, 500px, 1500px, 10px, 100px);
+  @include fluid-type(margin-right, 500px, 1500px, 10px, 100px);
 }
 
-section header+article {
-    // Fluid typography
-    @include fluid-type(font-size, 300px, 800px, 14px, 20px);
-    padding-bottom: 35px;
+section header + article {
+  // Fluid typography
+  @include fluid-type(font-size, 300px, 800px, 14px, 20px);
+  padding-bottom: 35px;
 }
 
 section header p {
-    // Fluid typography but for title of each section
-    @include fluid-type(font-size, 300px, 800px, 20px, 48px);
-    font-weight: bold;
-    margin-bottom: 25px;
+  // Fluid typography but for title of each section
+  @include fluid-type(font-size, 300px, 800px, 20px, 48px);
+  font-weight: bold;
+  margin-bottom: 25px;
 }
 
 section#totallynotanadvert {
-    width: 100%;
-    min-height: 5vw;
-    background-color: #55B3D0;
-    font-size: 1vw;
-    text-align: center;
+  width: 100%;
+  min-height: 5vw;
+  background-color: #55b3d0;
+  font-size: 1vw;
+  text-align: center;
 }
 
 .slider-leftArrow,
 .slider-rightArrow {
-    @include fluid-type(width, 200px, 1000px, 120px, 50px);
-    @include fluid-type(height, 200px, 1000px, 120px, 50px);
+  @include fluid-type(width, 200px, 1000px, 120px, 50px);
+  @include fluid-type(height, 200px, 1000px, 120px, 50px);
 }
 
 footer {
-    background-color: #55B3D0;
-    width: 100%;
-    height: min-content;
-    padding-top: 0px;
+  background-color: #55b3d0;
+  width: 100%;
+  height: min-content;
+  padding-top: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .contact {
+    font-weight: bolder;
+  }
+  img,
+  svg,
+  a {
+    @include fluid-type(height, 200px, 1000px, 60px, 30px);
+    margin: 8px;
+  }
+  svg {
+    &#patreonLogo {
+      overflow: hidden;
+      [data-color="1"] {
+        fill: #f96854;
+        transition: all 300ms cubic-bezier(0.19, 1, 0.22, 1);
+      }
+      [data-color="2"] {
+        fill: #052d49;
+        transition: all 300ms cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    }
+  }
+  div {
+    height: inherit;
+  }
+  div:nth-child(2) {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    .contact {
-        font-weight: bolder;
-    }
-    img,
-    svg,
-    a {
-        @include fluid-type(height, 200px, 1000px, 60px, 30px);
-        margin: 8px;
-    }
-    svg {
-        &#patreonLogo {
-            overflow: hidden;
-            [data-color='1'] {
-                fill: #f96854;
-                transition: all 300ms cubic-bezier(0.19, 1, 0.22, 1);
-            }
-            [data-color='2'] {
-                fill: #052d49;
-                transition: all 300ms cubic-bezier(0.19, 1, 0.22, 1);
-            }
-        }
-    }
-    div {
-        height: inherit;
-    }
-    div:nth-child(2) {
-        display: flex;
-        justify-content: flex-end;
-        align-content: unset;
-    }
+    justify-content: flex-end;
+    align-content: unset;
+  }
 }
 
 @media screen and (max-width: 300px) {
-    * {
-        transition: 0.1s all linear;
-    }
-    div.navButton {
-        // Put every link on its own line
-        text-align: center;
-        display: block !important;
-    }
-    .navButton:hover {
-        box-shadow: transparent;
-    }
-    nav {
-        // No need for the nav bar to stick to top of page without expanding menus
-        position: relative;
-        height: min-content;
-    }
-    .contentShifter {
-        // No content shift needed if the navigation bar doesn't stick to the top
-        height: 0px;
-    }
+  * {
+    transition: 0.1s all linear;
+  }
+  div.navButton {
+    // Put every link on its own line
+    text-align: center;
+    display: block !important;
+  }
+  .navButton:hover {
+    box-shadow: transparent;
+  }
+  nav {
+    // No need for the nav bar to stick to top of page without expanding menus
+    position: relative;
+    height: min-content;
+  }
+  .contentShifter {
+    // No content shift needed if the navigation bar doesn't stick to the top
+    height: 0px;
+  }
 }
 
 @media screen and (max-width: 350px) {
-    footer {
-        div {
-            width: 100%;
-            display: block;
-        }
-        display: block;
-        justify-content: center;
-        align-content: center;
-        div:nth-child(3) {
-            display: block;
-        }
+  footer {
+    div {
+      width: 100%;
+      display: block;
     }
+    display: block;
+    justify-content: center;
+    align-content: center;
+    div:nth-child(3) {
+      display: block;
+    }
+  }
 }

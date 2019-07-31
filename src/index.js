@@ -5,9 +5,9 @@ zenscroll.setup(null, 20); // Setup zenscroll to support URL hashes
 
 function debounce(func, wait, immediate) { // Debounce function (Bing it if you don't know)
     var timeout;
-    return function() {
+    return function () {
         var context = this, args = arguments;
-        var later = function() {
+        var later = function () {
             timeout = null;
             if (!immediate) func.apply(context, args);
         };
@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('scroll', manageNavLogo);
 });
 
-document.addEventListener("DOMContentLoaded", function(event) { // Wait for the DOM to finish loading
+document.addEventListener("DOMContentLoaded", function (event) { // Wait for the DOM to finish loading
+
     for (let i in document.getElementsByClassName('navButton')) { // Loop through all the navButtons
         if (document.getElementsByClassName('navButton')[i].classList && document.getElementsByClassName('navButton')[i].classList[0] == 'navButton') { // Make sure it has a proper classList
 
@@ -81,34 +82,31 @@ document.addEventListener("DOMContentLoaded", function(event) { // Wait for the 
             });
         }
     }
+
+    setTimeout(setupEmblaCarousels, 500);
 });
 
-import slider from './assets/html/slider.html'; // Get photo slider template
-import './assets/js/jssor.slider.min.js'; // Library for controlling the Photo Slider
 
-// A compactified template function for initializing a photo slider
-let initPhotoSlider = `(function() {var $=[{$Duration:2500,x:-.3,$During:{$Left:[.3,.7]},$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},{$Duration:1200,x:.3,$SlideOut:!0,$Easing:{$Left:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2}],i={$AutoPlay:1,$FillMode:1,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:$,$TransitionsOrder:1},$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Orientation:2,$NoDrag:!0}},s=new $JssorSlider$("jssor",i),a=1500;function n(){var $=s.$Elmt.parentNode.clientWidth;if($){var i=Math.min(a||$,$);s.$ScaleWidth(i)}else window.setTimeout(n,30)}n(),$Jssor$.$AddEvent(window,"load",n),$Jssor$.$AddEvent(window,"resize",n),$Jssor$.$AddEvent(window,"orientationchange",n)})()`;
-document.querySelectorAll('div#photoSlider').forEach(function(item) {
+import EmblaCarousel from 'embla-carousel';
 
-    let id = item.getAttribute('data-slider-name') || (() => { // Get specified ID of this photo slider. If no ID is specified, the index is used instead.
-        let sliders = document.querySelectorAll('div#photoSlider'); // Get all the photoSliders
-        for (let i in sliders) { // Loop through them
-            if (sliders[i] == item) { // If the current slider is the one we're looking for,
-                return i; // Return its index
-            }
-        } // Also yes this is a loop in a self executing function inside a variable. Don't @ me 
-    })(); 
+function setupEmblaCarousels() {
+    const emblaNodes = document.querySelectorAll('.embla');
 
-    let slideData = item.innerHTML; // Get the slide data from inside the photoSlider div
-    let data = insert(slider, slider.indexOf('id=slideData>') + 'id=slideData>'.length, slideData); // Combine the slider data and template into new variable 
-    data = replaceAll(data, 'jssor_', 'jssor_' + id + '_'); // Give every part of the new data a unique ID based on the grandfather element ID
-    data = replaceAll(data, 'id=jssor', 'id=jssor_' + id); // Make this slider's root div unique so the init function can target it exclusively
-    data = replaceAll(data, 'slideData', 'slideData' + id); // Make this slider's slideData div unique
+    for (let node of emblaNodes) {
+        const embla = EmblaCarousel(node, { loop: true });
 
-    item.innerHTML = data; // Place the new HTML onto the page
+        let peridicScrollerArgs = [() => {
+            embla.scrollNext();
+        }, 2500];
 
-    let init = replaceAll(initPhotoSlider, '"jssor"', '"jssor_' + id + '"'); // Make the javascript for this photo slider be unique to this slider's root div 
+        let periodicScroller = setInterval(...peridicScrollerArgs);
 
-    eval(init); // Init the photo slider for this section
+        embla.on("dragStart", () => {
+            clearInterval(periodicScroller);
+        });
 
-});
+        embla.on("dragEnd", () => {
+            periodicScroller = setInterval(...peridicScrollerArgs);
+        });
+    }
+}
