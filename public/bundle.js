@@ -2834,18 +2834,18 @@ function setupEmblaCarousels() {
     for (let node of emblaNodes) {
         const embla = embla_carousel__WEBPACK_IMPORTED_MODULE_2___default()(node, { loop: true });
 
-        let peridicScrollerArgs = [() => {
+        let periodicScrollerArgs = [() => {
             embla.scrollNext();
         }, 3000];
 
-        let periodicScroller = setInterval(...peridicScrollerArgs);
+        let periodicScroller = setInterval(...periodicScrollerArgs);
 
         embla.on("dragStart", () => {
             clearInterval(periodicScroller);
         });
 
         embla.on("dragEnd", () => {
-            periodicScroller = setInterval(...peridicScrollerArgs);
+            periodicScroller = setInterval(...periodicScrollerArgs);
         });
     }
 }
