@@ -97,7 +97,7 @@ function setupEmblaCarousels() {
 
         let peridicScrollerArgs = [() => {
             embla.scrollNext();
-        }, 2500];
+        }, 3000];
 
         let periodicScroller = setInterval(...peridicScrollerArgs);
 
